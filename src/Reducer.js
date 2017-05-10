@@ -226,7 +226,7 @@ function inject(state, action, props, scenes) {
         resetHistoryStack(state.children[ind]);
       }
 
-      if (state.children[state.index].name === action.key) {
+      if (state.children[state.index].name === action.key && state.children[state.index].index !== 0) {
         state.children[ind] = getInitialState(
           props,
           scenes,

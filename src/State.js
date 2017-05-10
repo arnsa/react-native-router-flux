@@ -32,7 +32,8 @@ function getStateFromScenes(route, scenes, props) {
 }
 
 function getSceneKey(parent, key, position, sceneKey) {
-  return [parent, key, position, sceneKey]
+  // return [parent, key, position, sceneKey]
+  return [parent, position, sceneKey]
     .filter(v => typeof (v) !== 'undefined' && v !== null)
     .join('_');
 }
