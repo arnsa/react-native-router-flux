@@ -427,7 +427,7 @@ class NavBar extends React.Component {
             onPress={onPress}
           >
             {leftTitle &&
-              <Text style={textStyle}>
+              <Text style={[textStyle, { color: 'rgb(0, 0, 0)' }]}>
                 {leftTitle}
               </Text>
             }
@@ -442,13 +442,32 @@ class NavBar extends React.Component {
             }
           </TouchableOpacity>
         );
-      }
-      if ((!!state.onLeft ^ !!(leftTitle || buttonImage))) {
-        console.warn(
-          `Both onLeft and leftTitle/leftButtonImage
-            must be specified for the scene: ${state.name}`,
+      } else if(!onPress && (leftTitle || buttonImage)) {
+        return (
+          <View
+            key={'leftNavBarBtn'}
+            testID="leftNavButton"
+            style={style}
+            onPress={onPress}
+          >
+            {leftTitle &&
+              <Text style={textStyle}>
+                {leftTitle}
+              </Text>
+            }
+            {buttonImage &&
+              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-start' }}>
+                {menuIcon || <Image
+                  source={buttonImage}
+                  style={state.leftButtonIconStyle || styles.defaultImageStyle}
+                />
+                }
+              </View>
+            }
+          </View>
         );
       }
+
       return null;
     }
     return tryRender(this.props.component, this.props.wrapBy) || tryRender(this.props);
