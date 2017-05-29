@@ -427,7 +427,7 @@ class NavBar extends React.Component {
             onPress={onPress}
           >
             {leftTitle &&
-              <Text style={[textStyle, { color: 'rgb(0, 0, 0)' }]}>
+              <Text>
                 {leftTitle}
               </Text>
             }
@@ -451,7 +451,7 @@ class NavBar extends React.Component {
             onPress={onPress}
           >
             {leftTitle &&
-              <Text style={textStyle}>
+              <Text style={[textStyle, { color: 'rgb(0, 0, 0)' }]}>
                 {leftTitle}
               </Text>
             }
